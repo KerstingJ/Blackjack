@@ -3,17 +3,22 @@ import java.util.ArrayList;
 public class Player {
 	public DeckOfCards deck;
 	private ArrayList<Card> hand = new ArrayList<Card>();
+	
 	public int highAces = 0;
 	public boolean blackJack = false;
 
 	public void drawCard() {
+		//adds one random Card object to hand
+		//using deck.drawcard 
 		hand.add(deck.drawCard());
 	}
 
 	public void firstDeal() {
+		//adds 2 card object to hand
 		hand.add(deck.drawCard());
 		hand.add(deck.drawCard());
 		
+		//Checks for blackjack
 		this.blackJack = this.hasBlackjack();
 		if (this.blackJack) {
 			System.out.println("BLACK JACK!!!!!!!");
@@ -21,10 +26,12 @@ public class Player {
 	}
 
 	public void clearHand() {
+		//clears all cards from hand
 		hand.clear();
 	}
 
 	public void countAces() {
+		//counts how many ace cards are in hand
 		for (Card c : hand) {
 			if (c.face == Faces.Ace) {
 				highAces += 1;
@@ -61,11 +68,13 @@ public class Player {
 	}
 	
 	public void newHand() {
+		//clears hand starts from fresh
 		highAces = 0;
 		hand.clear();
 	}
 	
 	public Player(DeckOfCards deck) {
+		//player constructor
 		newHand();
 		this.deck = deck;
 	}

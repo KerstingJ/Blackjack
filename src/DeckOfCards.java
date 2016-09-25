@@ -10,6 +10,8 @@ public class DeckOfCards {
 	}
 
 	public void newDeck() {
+		//clears deck and populates a fresh deck with cards
+		
 		cards.clear();
 
 		for (Suites suite : Suites.values()) {
@@ -22,6 +24,8 @@ public class DeckOfCards {
 	}
 
 	public Card drawCard() {
+		//selects random card object from deck
+		
 		Random rn = new Random();
 		int card = Math.abs(rn.nextInt() % (cards.size()));
 		// System.out.println("Length of deck: " + cards.size());

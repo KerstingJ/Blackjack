@@ -5,6 +5,7 @@ public class Card {
 	public int value;
 	
 	public String toString() {
+		//better description of what a card is
 		return String.format("%s of %s", face, suite);
 	}
 
