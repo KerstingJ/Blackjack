@@ -25,13 +25,16 @@ public class DeckOfCards {
 
 	public Card drawCard() {
 		//selects random card object from deck
+		if (cards.size() < 20) {
+			this.newDeck();
+		}
 		
 		Random rn = new Random();
 		int card = Math.abs(rn.nextInt() % (cards.size()));
 		// System.out.println("Length of deck: " + cards.size());
 		// System.out.println("Index of drawn card: " + card);
 		Card drawn = cards.remove(card);
-		System.out.println("Just drew " + drawn);
+		// System.out.println("Just drew " + drawn);
 		return drawn;
 	}
 }

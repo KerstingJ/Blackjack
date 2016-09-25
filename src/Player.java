@@ -2,10 +2,13 @@ import java.util.ArrayList;
 
 public class Player {
 	public DeckOfCards deck;
-	private ArrayList<Card> hand = new ArrayList<Card>();
+	public ArrayList<Card> hand = new ArrayList<Card>();
 	
 	public int highAces = 0;
 	public boolean blackJack = false;
+	public boolean bust = false;
+	public boolean dealer = false;
+	
 
 	public void drawCard() {
 		//adds one random Card object to hand
@@ -61,9 +64,11 @@ public class Player {
 		while (total > 21 && highAces > 0) {
 			total = total - 10;
 			highAces -= 1;
-			System.out.println("Adjusted for Ace");
 		}
-
+		
+		if (total > 21) {
+			bust = true;
+		}
 		return total;
 	}
 	
@@ -71,11 +76,30 @@ public class Player {
 		//clears hand starts from fresh
 		highAces = 0;
 		hand.clear();
+		bust = false;
+		blackJack = false;
+	}
+	
+	public void dealer_showing() {
+		if (dealer) {
+			System.out.println("Dealer Showing: " + hand.get(0));
+		}
 	}
 	
 	public Player(DeckOfCards deck) {
 		//player constructor
 		newHand();
 		this.deck = deck;
+		dealer = false;
+	}
+	
+	public Player(DeckOfCards deck, boolean dealer) {
+		//dealer constructor
+		newHand();
+		this.deck = deck;
+		
+		if (dealer) {
+			this.dealer = dealer;
+		}
 	}
 }
