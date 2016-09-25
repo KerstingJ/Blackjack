@@ -45,7 +45,6 @@ public class Blackjack {
 			while (response < 1 && p.blackJack == false) {
 
 				if (p.handScore() > 21) {
-					System.out.println("Sorry, Bust");
 					break;
 				}
 
@@ -56,7 +55,7 @@ public class Blackjack {
 				if (response == 0) {
 					p.drawCard();
 				}
-
+				System.out.println("Drew a " + p.hand.get(p.hand.size()-1));
 				System.out.println("Hand score: " + p.handScore());
 			}
 
